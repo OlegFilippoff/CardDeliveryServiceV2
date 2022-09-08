@@ -32,40 +32,12 @@ public class DeliveryTest {
         var firstMeetingDate = DataGenerator.generateDate(daysToAddForFirstMeeting);
         var daysToAddForSecondMeeting = 7;
         var secondMeetingDate = DataGenerator.generateDate(daysToAddForSecondMeeting);
-        // TODO: добавить логику теста в рамках которого будет выполнено планирование и перепланирование встречи.
-        // Для заполнения полей формы можно использовать пользователя validUser и строки с датами в переменных
-        // firstMeetingDate и secondMeetingDate. Можно также вызывать методы generateCity(locale),
-        // generateName(locale), generatePhone(locale) для генерации и получения в тесте соответственно города,
-        // имени и номера телефона без создания пользователя в методе generateUser(String locale) в датагенераторе
         $("[placeholder=\"Город\"]").setValue(validUser.getCity());
         $("[placeholder=\"Дата встречи\"]").doubleClick().sendKeys(firstMeetingDate);
         $("[data-test-id=\"name\"] input.input__control").setValue(validUser.getName());
         $("[name=\"phone\"]").setValue(validUser.getPhone());
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
         $("[type=button] .button__text").click();
-        SelenideElement cityError = $("[data-test-id=\"city\"].input_invalid .input__sub");
-        boolean isNotCorrect = cityError.isDisplayed();
-        while (true) {
-            if (isNotCorrect) {
-                $("[placeholder=\"Город\"]").doubleClick().sendKeys(Keys.DELETE);
-                $("[placeholder=\"Город\"]").val(DataGenerator.generateCity("ru"));
-                $("[type=button] .button__text").click();
-
-            }
-            break;
-        }
-        SelenideElement nameError = $("[data-test-id=\"name\"] input.input__control");
-        boolean isNotCorrectName = nameError.isDisplayed();
-        while (true) {
-            if (isNotCorrectName) {
-                $("[data-test-id=\"name\"] input.input__control")
-                        .doubleClick().sendKeys(Keys.chord(Keys.CONTROL, "a") + Keys.BACK_SPACE);
-                $("[data-test-id=\"name\"] input.input__control").val(DataGenerator.generateName("ru"));
-                $("[type=button] .button__text").click();
-
-            }
-            break;
-        }
         $(".notification__title").shouldBe(Condition.visible, Duration.ofSeconds(4));
         $("[data-test-id=success-notification] .notification__content").should(Condition.exactText("Встреча успешно запланирована на " + firstMeetingDate));
         $("[placeholder=\"Дата встречи\"]").doubleClick().sendKeys(secondMeetingDate);
@@ -83,40 +55,12 @@ public class DeliveryTest {
         var firstMeetingDate = DataGenerator.generateDate(daysToAddForFirstMeeting);
         var daysToAddForSecondMeeting = 7;
         var secondMeetingDate = DataGenerator.generateDate(daysToAddForSecondMeeting);
-        // TODO: добавить логику теста в рамках которого будет выполнено планирование и перепланирование встречи.
-        // Для заполнения полей формы можно использовать пользователя validUser и строки с датами в переменных
-        // firstMeetingDate и secondMeetingDate. Можно также вызывать методы generateCity(locale),
-        // generateName(locale), generatePhone(locale) для генерации и получения в тесте соответственно города,
-        // имени и номера телефона без создания пользователя в методе generateUser(String locale) в датагенераторе
         $("[placeholder=\"Город\"]").setValue(validUser.getCity());
         $("[placeholder=\"Дата встречи\"]").doubleClick().sendKeys(firstMeetingDate);
         $("[data-test-id=\"name\"] input.input__control").setValue(validUser.getName());
         $("[name=\"phone\"]").doubleClick().sendKeys(Keys.BACK_SPACE);
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
         $("[type=button] .button__text").click();
-        SelenideElement cityError = $("[data-test-id=\"city\"].input_invalid .input__sub");
-        boolean isNotCorrect = cityError.isDisplayed();
-        while (true) {
-            if (isNotCorrect) {
-                $("[placeholder=\"Город\"]").doubleClick().sendKeys(Keys.DELETE);
-                $("[placeholder=\"Город\"]").val(DataGenerator.generateCity("ru"));
-                $("[type=button] .button__text").click();
-
-            }
-            break;
-        }
-        SelenideElement nameError = $("[data-test-id=\"name\"] input.input__control");
-        boolean isNotCorrectName = nameError.isDisplayed();
-        while (true) {
-            if (isNotCorrectName) {
-                $("[data-test-id=\"name\"] input.input__control")
-                        .doubleClick().sendKeys(Keys.chord(Keys.CONTROL, "a") + Keys.BACK_SPACE);
-                $("[data-test-id=\"name\"] input.input__control").val(DataGenerator.generateName("ru"));
-                $("[type=button] .button__text").click();
-
-            }
-            break;
-        }
         $("[data-test-id=\"phone\"].input_invalid .input__sub").shouldHave(Condition.exactText("Поле обязательно для заполнения"));
     }
 
@@ -128,28 +72,12 @@ public class DeliveryTest {
         var firstMeetingDate = DataGenerator.generateDate(daysToAddForFirstMeeting);
         var daysToAddForSecondMeeting = 7;
         var secondMeetingDate = DataGenerator.generateDate(daysToAddForSecondMeeting);
-        // TODO: добавить логику теста в рамках которого будет выполнено планирование и перепланирование встречи.
-        // Для заполнения полей формы можно использовать пользователя validUser и строки с датами в переменных
-        // firstMeetingDate и secondMeetingDate. Можно также вызывать методы generateCity(locale),
-        // generateName(locale), generatePhone(locale) для генерации и получения в тесте соответственно города,
-        // имени и номера телефона без создания пользователя в методе generateUser(String locale) в датагенераторе
         $("[placeholder=\"Город\"]").setValue(validUser.getCity());
         $("[placeholder=\"Дата встречи\"]").doubleClick().sendKeys(firstMeetingDate);
         $("[data-test-id=\"name\"] input.input__control").doubleClick().sendKeys(Keys.BACK_SPACE);
         $("[name=\"phone\"]").doubleClick().sendKeys(validUser.getPhone());
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
         $("[type=button] .button__text").click();
-        SelenideElement cityError = $("[data-test-id=\"city\"].input_invalid .input__sub");
-        boolean isNotCorrect = cityError.isDisplayed();
-        while (true) {
-            if (isNotCorrect) {
-                $("[placeholder=\"Город\"]").doubleClick().sendKeys(Keys.DELETE);
-                $("[placeholder=\"Город\"]").val(DataGenerator.generateCity("ru"));
-                $("[type=button] .button__text").click();
-
-            }
-            break;
-        }
         $("[data-test-id=name].input_invalid .input__sub").should(Condition.exactText("Поле обязательно для заполнения"));
     }
 
@@ -161,29 +89,12 @@ public class DeliveryTest {
         var firstMeetingDate = DataGenerator.generateDate(daysToAddForFirstMeeting);
         var daysToAddForSecondMeeting = 7;
         var secondMeetingDate = DataGenerator.generateDate(daysToAddForSecondMeeting);
-        // TODO: добавить логику теста в рамках которого будет выполнено планирование и перепланирование встречи.
-        // Для заполнения полей формы можно использовать пользователя validUser и строки с датами в переменных
-        // firstMeetingDate и secondMeetingDate. Можно также вызывать методы generateCity(locale),
-        // generateName(locale), generatePhone(locale) для генерации и получения в тесте соответственно города,
-        // имени и номера телефона без создания пользователя в методе generateUser(String locale) в датагенераторе
         $("[placeholder=\"Город\"]").doubleClick().sendKeys(Keys.DELETE);
         $("[placeholder=\"Дата встречи\"]").doubleClick().sendKeys(firstMeetingDate);
         $("[data-test-id=\"name\"] input.input__control").setValue(validUser.getName());
         $("[name=\"phone\"]").setValue(validUser.getPhone());
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
         $("[type=button] .button__text").click();
-        SelenideElement nameError = $("[data-test-id=\"name\"] input.input__control");
-        boolean isNotCorrectName = nameError.isDisplayed();
-        while (true) {
-            if (isNotCorrectName) {
-                $("[data-test-id=\"name\"] input.input__control")
-                        .doubleClick().sendKeys(Keys.chord(Keys.CONTROL, "a") + Keys.BACK_SPACE);
-                $("[data-test-id=\"name\"] input.input__control").val(DataGenerator.generateName("ru"));
-                $("[type=button] .button__text").click();
-
-            }
-            break;
-        }
         $("[data-test-id=\"city\"].input_invalid .input__sub").should(Condition.exactText("Поле обязательно для заполнения"));
     }
 
@@ -195,28 +106,12 @@ public class DeliveryTest {
         var firstMeetingDate = DataGenerator.generateDate(daysToAddForFirstMeeting);
         var daysToAddForSecondMeeting = 7;
         var secondMeetingDate = DataGenerator.generateDate(daysToAddForSecondMeeting);
-        // TODO: добавить логику теста в рамках которого будет выполнено планирование и перепланирование встречи.
-        // Для заполнения полей формы можно использовать пользователя validUser и строки с датами в переменных
-        // firstMeetingDate и secondMeetingDate. Можно также вызывать методы generateCity(locale),
-        // generateName(locale), generatePhone(locale) для генерации и получения в тесте соответственно города,
-        // имени и номера телефона без создания пользователя в методе generateUser(String locale) в датагенераторе
         $("[placeholder=\"Город\"]").setValue(validUser.getCity());
         $("[placeholder=\"Дата встречи\"]").doubleClick().sendKeys(firstMeetingDate);
-        $("[data-test-id=\"name\"] input.input__control").setValue(validUser.getName() + " Ёдовна");
+        $("[data-test-id=\"name\"] input.input__control").setValue(validUser.getName() + " Ёжикова");
         $("[name=\"phone\"]").setValue(validUser.getPhone());
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
         $("[type=button] .button__text").click();
-        SelenideElement cityError = $("[data-test-id=\"city\"].input_invalid .input__sub");
-        boolean isNotCorrect = cityError.isDisplayed();
-        while (true) {
-            if (isNotCorrect) {
-                $("[placeholder=\"Город\"]").doubleClick().sendKeys(Keys.DELETE);
-                $("[placeholder=\"Город\"]").val(DataGenerator.generateCity("ru"));
-                $("[type=button] .button__text").click();
-
-            }
-            break;
-        }
         $(".notification__title").shouldBe(Condition.visible, Duration.ofSeconds(4));
         $("[data-test-id=success-notification] .notification__content").should(Condition.exactText("Встреча успешно запланирована на " + firstMeetingDate));
         $("[placeholder=\"Дата встречи\"]").doubleClick().sendKeys(secondMeetingDate);
@@ -234,42 +129,13 @@ public class DeliveryTest {
         var firstMeetingDate = DataGenerator.generateDate(daysToAddForFirstMeeting);
         var daysToAddForSecondMeeting = 0;
         var secondMeetingDate = DataGenerator.generateDate(daysToAddForSecondMeeting);
-        // TODO: добавить логику теста в рамках которого будет выполнено планирование и перепланирование встречи.
-        // Для заполнения полей формы можно использовать пользователя validUser и строки с датами в переменных
-        // firstMeetingDate и secondMeetingDate. Можно также вызывать методы generateCity(locale),
-        // generateName(locale), generatePhone(locale) для генерации и получения в тесте соответственно города,
-        // имени и номера телефона без создания пользователя в методе generateUser(String locale) в датагенераторе
         $("[placeholder=\"Город\"]").val(validUser.getCity());
         $("[placeholder=\"Дата встречи\"]").doubleClick().sendKeys(firstMeetingDate);
         $("[data-test-id=\"name\"] input.input__control").val(validUser.getName());
         $("[name=\"phone\"]").setValue(validUser.getPhone());
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
         $("[type=button] .button__text").click();
-        SelenideElement cityError = $("[data-test-id=\"city\"].input_invalid .input__sub");
-        boolean isNotCorrect = cityError.isDisplayed();
-        while (true) {
-            if (isNotCorrect) {
-                $("[placeholder=\"Город\"]").doubleClick().sendKeys(Keys.DELETE);
-                $("[placeholder=\"Город\"]").val(DataGenerator.generateCity("ru"));
-                $("[type=button] .button__text").click();
-
-            }
-            break;
-        }
-        SelenideElement nameError = $("[data-test-id=\"name\"] input.input__control");
-        boolean isNotCorrectName = nameError.isDisplayed();
-        while (true) {
-            if (isNotCorrectName) {
-                $("[data-test-id=\"name\"] input.input__control")
-                        .doubleClick().sendKeys(Keys.chord(Keys.CONTROL, "a") + Keys.BACK_SPACE);;
-                $("[data-test-id=\"name\"] input.input__control").val(DataGenerator.generateName("ru"));
-                $("[type=button] .button__text").click();
-
-            }
-            break;
-        }
         $("[data-test-id=\"date\"] .input_invalid .input__sub").should(Condition.exactText("Заказ на выбранную дату невозможен"));
-
     }
 
     @Test
@@ -280,40 +146,12 @@ public class DeliveryTest {
         var firstMeetingDate = DataGenerator.generateDate(daysToAddForFirstMeeting);
         var daysToAddForSecondMeeting = 1;
         var secondMeetingDate = DataGenerator.generateDate(daysToAddForSecondMeeting);
-        // TODO: добавить логику теста в рамках которого будет выполнено планирование и перепланирование встречи.
-        // Для заполнения полей формы можно использовать пользователя validUser и строки с датами в переменных
-        // firstMeetingDate и secondMeetingDate. Можно также вызывать методы generateCity(locale),
-        // generateName(locale), generatePhone(locale) для генерации и получения в тесте соответственно города,
-        // имени и номера телефона без создания пользователя в методе generateUser(String locale) в датагенераторе
         $("[placeholder=\"Город\"]").val(validUser.getCity());
         $("[placeholder=\"Дата встречи\"]").doubleClick().sendKeys(firstMeetingDate);
         $("[data-test-id=\"name\"] input.input__control").val(validUser.getName());
         $("[name=\"phone\"]").setValue(validUser.getPhone());
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
         $("[type=button] .button__text").click();
-        SelenideElement cityError = $("[data-test-id=\"city\"].input_invalid .input__sub");
-        boolean isNotCorrect = cityError.isDisplayed();
-        while (true) {
-            if (isNotCorrect) {
-                $("[placeholder=\"Город\"]").doubleClick().sendKeys(Keys.DELETE);
-                $("[placeholder=\"Город\"]").val(DataGenerator.generateCity("ru"));
-                $("[type=button] .button__text").click();
-
-            }
-            break;
-        }
-        SelenideElement nameError = $("[data-test-id=\"name\"] input.input__control");
-        boolean isNotCorrectName = nameError.isDisplayed();
-        while (true) {
-            if (isNotCorrectName) {
-                $("[data-test-id=\"name\"] input.input__control")
-                        .doubleClick().sendKeys(Keys.chord(Keys.CONTROL, "a") + Keys.BACK_SPACE);
-                $("[data-test-id=\"name\"] input.input__control").val(DataGenerator.generateName("ru"));
-                $("[type=button] .button__text").click();
-
-            }
-            break;
-        }
         $(".notification__title").shouldBe(Condition.visible, Duration.ofSeconds(4));
         $("[data-test-id=success-notification] .notification__content").should(Condition.exactText("Встреча успешно запланирована на " + firstMeetingDate));
         $("[placeholder=\"Дата встречи\"]").doubleClick().sendKeys(secondMeetingDate);
@@ -330,40 +168,12 @@ public class DeliveryTest {
         var firstMeetingDate = DataGenerator.generateDate(daysToAddForFirstMeeting);
         var daysToAddForSecondMeeting = 0;
         var secondMeetingDate = DataGenerator.generateDate(daysToAddForSecondMeeting);
-        // TODO: добавить логику теста в рамках которого будет выполнено планирование и перепланирование встречи.
-        // Для заполнения полей формы можно использовать пользователя validUser и строки с датами в переменных
-        // firstMeetingDate и secondMeetingDate. Можно также вызывать методы generateCity(locale),
-        // generateName(locale), generatePhone(locale) для генерации и получения в тесте соответственно города,
-        // имени и номера телефона без создания пользователя в методе generateUser(String locale) в датагенераторе
         $("[placeholder=\"Город\"]").val(validUser.getCity());
         $("[placeholder=\"Дата встречи\"]").doubleClick().sendKeys(firstMeetingDate);
         $("[data-test-id=\"name\"] input.input__control").val(validUser.getName());
         $("[name=\"phone\"]").setValue(validUser.getPhone());
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
         $("[type=button] .button__text").click();
-        SelenideElement cityError = $("[data-test-id=\"city\"].input_invalid .input__sub");
-        boolean isNotCorrect = cityError.isDisplayed();
-        while (true) {
-            if (isNotCorrect) {
-                $("[placeholder=\"Город\"]").doubleClick().sendKeys(Keys.DELETE);
-                $("[placeholder=\"Город\"]").val(DataGenerator.generateCity("ru"));
-                $("[type=button] .button__text").click();
-
-            }
-            break;
-        }
-        SelenideElement nameError = $("[data-test-id=\"name\"] input.input__control");
-        boolean isNotCorrectName = nameError.isDisplayed();
-        while (true) {
-            if (isNotCorrectName) {
-                $("[data-test-id=\"name\"] input.input__control")
-                        .doubleClick().sendKeys(Keys.chord(Keys.CONTROL, "a") + Keys.BACK_SPACE);
-                $("[data-test-id=\"name\"] input.input__control").val(DataGenerator.generateName("ru"));
-                $("[type=button] .button__text").click();
-
-            }
-            break;
-        }
         $("[data-test-id=\"date\"] .input_invalid .input__sub").should(Condition.exactText("Заказ на выбранную дату невозможен"));
     }
 
@@ -375,29 +185,12 @@ public class DeliveryTest {
         var firstMeetingDate = DataGenerator.generateDate(daysToAddForFirstMeeting);
         var daysToAddForSecondMeeting = 120;
         var secondMeetingDate = DataGenerator.generateDate(daysToAddForSecondMeeting);
-        // TODO: добавить логику теста в рамках которого будет выполнено планирование и перепланирование встречи.
-        // Для заполнения полей формы можно использовать пользователя validUser и строки с датами в переменных
-        // firstMeetingDate и secondMeetingDate. Можно также вызывать методы generateCity(locale),
-        // generateName(locale), generatePhone(locale) для генерации и получения в тесте соответственно города,
-        // имени и номера телефона без создания пользователя в методе generateUser(String locale) в датагенераторе
-        $("[placeholder=\"Город\"]").val(validUser.getCity());
+        $("[placeholder=\"Город\"]").val("Вашингтон");
         $("[placeholder=\"Дата встречи\"]").doubleClick().sendKeys(firstMeetingDate);
         $("[data-test-id=\"name\"] input.input__control").val(validUser.getName());
         $("[name=\"phone\"]").setValue(validUser.getPhone());
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
         $("[type=button] .button__text").click();
-        SelenideElement nameError = $("[data-test-id=\"name\"] input.input__control");
-        boolean isNotCorrectName = nameError.isDisplayed();
-        while (true) {
-            if (isNotCorrectName) {
-                $("[data-test-id=\"name\"] input.input__control")
-                        .doubleClick().sendKeys(Keys.chord(Keys.CONTROL, "a") + Keys.BACK_SPACE);
-                $("[data-test-id=\"name\"] input.input__control").val(DataGenerator.generateName("ru"));
-                $("[type=button] .button__text").click();
-
-            }
-            break;
-        }
         $("[data-test-id=\"city\"].input_invalid .input__sub").should(Condition.exactText("Доставка в выбранный город недоступна"));
     }
 
@@ -409,29 +202,12 @@ public class DeliveryTest {
         var firstMeetingDate = DataGenerator.generateDate(daysToAddForFirstMeeting);
         var daysToAddForSecondMeeting = 120;
         var secondMeetingDate = DataGenerator.generateDate(daysToAddForSecondMeeting);
-        // TODO: добавить логику теста в рамках которого будет выполнено планирование и перепланирование встречи.
-        // Для заполнения полей формы можно использовать пользователя validUser и строки с датами в переменных
-        // firstMeetingDate и secondMeetingDate. Можно также вызывать методы generateCity(locale),
-        // generateName(locale), generatePhone(locale) для генерации и получения в тесте соответственно города,
-        // имени и номера телефона без создания пользователя в методе generateUser(String locale) в датагенераторе
         $("[placeholder=\"Город\"]").val(validUser.getCity() + "!@#");
         $("[placeholder=\"Дата встречи\"]").doubleClick().sendKeys(firstMeetingDate);
         $("[data-test-id=\"name\"] input.input__control").val(validUser.getName());
         $("[name=\"phone\"]").setValue(validUser.getPhone());
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
         $("[type=button] .button__text").click();
-        SelenideElement nameError = $("[data-test-id=\"name\"] input.input__control");
-        boolean isNotCorrectName = nameError.isDisplayed();
-        while (true) {
-            if (isNotCorrectName) {
-                $("[data-test-id=\"name\"] input.input__control")
-                        .doubleClick().sendKeys(Keys.chord(Keys.CONTROL, "a") + Keys.BACK_SPACE);
-                $("[data-test-id=\"name\"] input.input__control").val(DataGenerator.generateName("ru"));
-                $("[type=button] .button__text").click();
-
-            }
-            break;
-        }
         $("[data-test-id=\"city\"].input_invalid .input__sub").should(Condition.exactText("Доставка в выбранный город недоступна"));
     }
 
@@ -443,28 +219,12 @@ public class DeliveryTest {
         var firstMeetingDate = DataGenerator.generateDate(daysToAddForFirstMeeting);
         var daysToAddForSecondMeeting = 120;
         var secondMeetingDate = DataGenerator.generateDate(daysToAddForSecondMeeting);
-        // TODO: добавить логику теста в рамках которого будет выполнено планирование и перепланирование встречи.
-        // Для заполнения полей формы можно использовать пользователя validUser и строки с датами в переменных
-        // firstMeetingDate и secondMeetingDate. Можно также вызывать методы generateCity(locale),
-        // generateName(locale), generatePhone(locale) для генерации и получения в тесте соответственно города,
-        // имени и номера телефона без создания пользователя в методе generateUser(String locale) в датагенераторе
         $("[placeholder=\"Город\"]").val(validUser.getCity() + "123.0");
         $("[placeholder=\"Дата встречи\"]").doubleClick().sendKeys(firstMeetingDate);
         $("[data-test-id=\"name\"] input.input__control").val(validUser.getName());
         $("[name=\"phone\"]").setValue(validUser.getPhone());
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
         $("[type=button] .button__text").click();
-        SelenideElement nameError = $("[data-test-id=\"name\"] input.input__control");
-        boolean isNotCorrectName = nameError.isDisplayed();
-        while (true) {
-            if (isNotCorrectName) {
-                $("[data-test-id=\"name\"] input.input__control").doubleClick().sendKeys(Keys.BACK_SPACE);
-                $("[data-test-id=\"name\"] input.input__control").val(DataGenerator.generateName("ru"));
-                $("[type=button] .button__text").click();
-
-            }
-            break;
-        }
         $("[data-test-id=\"city\"].input_invalid .input__sub").should(Condition.exactText("Доставка в выбранный город недоступна"));
     }
 
@@ -476,28 +236,12 @@ public class DeliveryTest {
         var firstMeetingDate = DataGenerator.generateDate(daysToAddForFirstMeeting);
         var daysToAddForSecondMeeting = 120;
         var secondMeetingDate = DataGenerator.generateDate(daysToAddForSecondMeeting);
-        // TODO: добавить логику теста в рамках которого будет выполнено планирование и перепланирование встречи.
-        // Для заполнения полей формы можно использовать пользователя validUser и строки с датами в переменных
-        // firstMeetingDate и secondMeetingDate. Можно также вызывать методы generateCity(locale),
-        // generateName(locale), generatePhone(locale) для генерации и получения в тесте соответственно города,
-        // имени и номера телефона без создания пользователя в методе generateUser(String locale) в датагенераторе
         $("[placeholder=\"Город\"]").val("  " + validUser.getCity() + "  ");
         $("[placeholder=\"Дата встречи\"]").doubleClick().sendKeys(firstMeetingDate);
         $("[data-test-id=\"name\"] input.input__control").val(validUser.getName());
         $("[name=\"phone\"]").setValue(validUser.getPhone());
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
         $("[type=button] .button__text").click();
-        SelenideElement nameError = $("[data-test-id=\"name\"] input.input__control");
-        boolean isNotCorrectName = nameError.isDisplayed();
-        while (true) {
-            if (isNotCorrectName) {
-                $("[data-test-id=\"name\"] input.input__control").doubleClick().sendKeys(Keys.BACK_SPACE);
-                $("[data-test-id=\"name\"] input.input__control").val(DataGenerator.generateName("ru"));
-                $("[type=button] .button__text").click();
-
-            }
-            break;
-        }
         $("[data-test-id=\"city\"].input_invalid .input__sub").should(Condition.exactText("Доставка в выбранный город недоступна"));
     }
 
@@ -509,28 +253,12 @@ public class DeliveryTest {
         var firstMeetingDate = DataGenerator.generateDate(daysToAddForFirstMeeting);
         var daysToAddForSecondMeeting = 120;
         var secondMeetingDate = DataGenerator.generateDate(daysToAddForSecondMeeting);
-        // TODO: добавить логику теста в рамках которого будет выполнено планирование и перепланирование встречи.
-        // Для заполнения полей формы можно использовать пользователя validUser и строки с датами в переменных
-        // firstMeetingDate и secondMeetingDate. Можно также вызывать методы generateCity(locale),
-        // generateName(locale), generatePhone(locale) для генерации и получения в тесте соответственно города,
-        // имени и номера телефона без создания пользователя в методе generateUser(String locale) в датагенераторе
         $("[placeholder=\"Город\"]").val(validUser.getCity());
         $("[placeholder=\"Дата встречи\"]").doubleClick().sendKeys(firstMeetingDate);
         $("[data-test-id=\"name\"] input.input__control").val(DataGenerator.generateName("en"));
         $("[name=\"phone\"]").setValue(validUser.getPhone());
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
         $("[type=button] .button__text").click();
-        SelenideElement cityError = $("[data-test-id=\"city\"].input_invalid .input__sub");
-        boolean isNotCorrect = cityError.isDisplayed();
-        while (true) {
-            if (isNotCorrect) {
-                $("[placeholder=\"Город\"]").doubleClick().sendKeys(Keys.DELETE);
-                $("[placeholder=\"Город\"]").val(DataGenerator.generateCity("ru"));
-                $("[type=button] .button__text").click();
-
-            }
-            break;
-        }
         $("[data-test-id=\"name\"].input_invalid .input__sub").should(Condition.exactText("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы."));
     }
 
@@ -542,28 +270,12 @@ public class DeliveryTest {
         var firstMeetingDate = DataGenerator.generateDate(daysToAddForFirstMeeting);
         var daysToAddForSecondMeeting = 120;
         var secondMeetingDate = DataGenerator.generateDate(daysToAddForSecondMeeting);
-        // TODO: добавить логику теста в рамках которого будет выполнено планирование и перепланирование встречи.
-        // Для заполнения полей формы можно использовать пользователя validUser и строки с датами в переменных
-        // firstMeetingDate и secondMeetingDate. Можно также вызывать методы generateCity(locale),
-        // generateName(locale), generatePhone(locale) для генерации и получения в тесте соответственно города,
-        // имени и номера телефона без создания пользователя в методе generateUser(String locale) в датагенераторе
         $("[placeholder=\"Город\"]").val(validUser.getCity());
         $("[placeholder=\"Дата встречи\"]").doubleClick().sendKeys(firstMeetingDate);
-        $("[data-test-id=\"name\"] input.input__control").val(validUser.getName() + ")(%");
+        $("[data-test-id=\"name\"] input.input__control").val( "$^&" + validUser.getName() + ")(%!");
         $("[name=\"phone\"]").setValue(validUser.getPhone());
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
         $("[type=button] .button__text").click();
-        SelenideElement cityError = $("[data-test-id=\"city\"].input_invalid .input__sub");
-        boolean isNotCorrect = cityError.isDisplayed();
-        while (true) {
-            if (isNotCorrect) {
-                $("[placeholder=\"Город\"]").doubleClick().sendKeys(Keys.DELETE);
-                $("[placeholder=\"Город\"]").val(DataGenerator.generateCity("ru"));
-                $("[type=button] .button__text").click();
-
-            }
-            break;
-        }
         $("[data-test-id=\"name\"].input_invalid .input__sub").should(Condition.exactText("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы."));
     }
 
@@ -575,11 +287,6 @@ public class DeliveryTest {
         var firstMeetingDate = DataGenerator.generateDate(daysToAddForFirstMeeting);
         var daysToAddForSecondMeeting = 300;
         var secondMeetingDate = DataGenerator.generateDate(daysToAddForSecondMeeting);
-        // TODO: добавить логику теста в рамках которого будет выполнено планирование и перепланирование встречи.
-        // Для заполнения полей формы можно использовать пользователя validUser и строки с датами в переменных
-        // firstMeetingDate и secondMeetingDate. Можно также вызывать методы generateCity(locale),
-        // generateName(locale), generatePhone(locale) для генерации и получения в тесте соответственно города,
-        // имени и номера телефона без создания пользователя в методе generateUser(String locale) в датагенераторе
         $("[placeholder=\"Город\"]").val(validUser.getCity());
         $("[placeholder=\"Дата встречи\"]").doubleClick().sendKeys(firstMeetingDate);
         $("[data-test-id=\"name\"] input.input__control").val("0.1" + validUser.getName() + "55");
@@ -587,16 +294,6 @@ public class DeliveryTest {
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
         $("[type=button] .button__text").click();
         SelenideElement cityError = $("[data-test-id=\"city\"].input_invalid .input__sub");
-        boolean isNotCorrect = cityError.isDisplayed();
-        while (true) {
-            if (isNotCorrect) {
-                $("[placeholder=\"Город\"]").doubleClick().sendKeys(Keys.DELETE);
-                $("[placeholder=\"Город\"]").val(DataGenerator.generateCity("ru"));
-                $("[type=button] .button__text").click();
-
-            }
-            break;
-        }
         $("[data-test-id=\"name\"].input_invalid .input__sub").should(Condition.exactText("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы."));
     }
 
@@ -609,11 +306,6 @@ public class DeliveryTest {
         var firstMeetingDate = DataGenerator.generateDate(daysToAddForFirstMeeting);
         var daysToAddForSecondMeeting = 120;
         var secondMeetingDate = DataGenerator.generateDate(daysToAddForSecondMeeting);
-        // TODO: добавить логику теста в рамках которого будет выполнено планирование и перепланирование встречи.
-        // Для заполнения полей формы можно использовать пользователя validUser и строки с датами в переменных
-        // firstMeetingDate и secondMeetingDate. Можно также вызывать методы generateCity(locale),
-        // generateName(locale), generatePhone(locale) для генерации и получения в тесте соответственно города,
-        // имени и номера телефона без создания пользователя в методе generateUser(String locale) в датагенераторе
         $("[placeholder=\"Город\"]").val(validUser.getCity());
         $("[placeholder=\"Дата встречи\"]").doubleClick().sendKeys(firstMeetingDate);
         $("[data-test-id=\"name\"] input.input__control").val(validUser.getName());
@@ -621,28 +313,7 @@ public class DeliveryTest {
         $("[data-test-id=\"agreement\"] .checkbox__box").click();
         $("[type=button] .button__text").click();
         SelenideElement cityError = $("[data-test-id=\"city\"].input_invalid .input__sub");
-        boolean isNotCorrect = cityError.isDisplayed();
-        while (true) {
-            if (isNotCorrect) {
-                $("[placeholder=\"Город\"]").doubleClick().sendKeys(Keys.DELETE);
-                $("[placeholder=\"Город\"]").val(DataGenerator.generateCity("ru"));
-                $("[type=button] .button__text").click();
-
-            }
-            break;
-        }
         SelenideElement nameError = $("[data-test-id=\"name\"] input.input__control");
-        boolean isNotCorrectName = nameError.isDisplayed();
-        while (true) {
-            if (isNotCorrectName) {
-                $("[data-test-id=\"name\"] input.input__control")
-                        .doubleClick().sendKeys(Keys.chord(Keys.CONTROL, "a") + Keys.BACK_SPACE);
-                $("[data-test-id=\"name\"] input.input__control").val(DataGenerator.generateName("ru"));
-                $("[type=button] .button__text").click();
-
-            }
-            break;
-        }
         $(".notification__title").shouldBe(Condition.visible, Duration.ofSeconds(4));
         $("[data-test-id=success-notification] .notification__content").should(Condition.exactText("Встреча успешно запланирована на " + firstMeetingDate));
         $("[placeholder=\"Дата встречи\"]").doubleClick().sendKeys(secondMeetingDate);
